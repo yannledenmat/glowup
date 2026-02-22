@@ -1,0 +1,228 @@
+# GlowCommerce - .gitignore
+# Cross-platform compatible
+
+# ===================================
+# Secrets & Environment
+# ===================================
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+secrets/
+*.secret
+
+# ===================================
+# Java / Maven
+# ===================================
+target/
+*.jar
+*.war
+*.ear
+*.class
+*.log
+*.iml
+.classpath
+.project
+.settings/
+.factorypath
+
+# Maven wrapper
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# ===================================
+# Node.js / npm
+# ===================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-store/
+
+# Build outputs
+dist/
+dist-ssr/
+*.local
+
+# Testing
+coverage/
+*.lcov
+
+# ===================================
+# IDE / Editors
+# ===================================
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.ipr
+out/
+
+# VS Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Eclipse
+*.launch
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# ===================================
+# macOS
+# ===================================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# ===================================
+# Windows
+# ===================================
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# ===================================
+# Linux
+# ===================================
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ===================================
+# Docker
+# ===================================
+.dockerignore
+docker-compose.override.yml
+*.pid
+*.seed
+*.pid.lock
+
+# ===================================
+# Logs
+# ===================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.npm
+.eslintcache
+
+# ===================================
+# Databases
+# ===================================
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# PostgreSQL
+*.pgdata
+pgdata/
+
+# ===================================
+# Generated PDFs
+# ===================================
+pdfs/
+*.pdf
+
+# ===================================
+# Temporary files
+# ===================================
+*.tmp
+*.temp
+*.cache
+.cache/
+.temp/
+
+# ===================================
+# Backup files
+# ===================================
+*.bak
+*.backup
+*~
+
+# ===================================
+# OS generated files
+# ===================================
+.Spotlight-V100
+.Trashes
+Desktop.ini
+
+# ===================================
+# Application specific
+# ===================================
+application-*.properties
+!application.properties
+!application-*.properties.example
+
+# ===================================
+# Test files (optionnel - décommenter si besoin)
+# ===================================
+# test-output/
+# test-results/
+# .nyc_output/
+
+# ===================================
+# Package files
+# ===================================
+*.7z
+*.dmg
+*.gz
+*.iso
+*.rar
+*.tar
+*.zip
+
+# ===================================
+# Certificates (sauf exemples)
+# ===================================
+*.crt
+*.cer
+*.der
+*.p12
+*.jks
+*.keystore
+!*.example.crt
+!*.example.p12

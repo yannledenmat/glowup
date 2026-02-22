@@ -1,0 +1,58 @@
+.footer {
+  background: var(--gray-900);
+  color: white;
+  padding: 3rem 0 1rem;
+  margin-top: 4rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  margin: 0 0 1rem 0;
+  color: white;
+}
+
+.footer-section h3 {
+  font-size: 1.5rem;
+}
+
+.footer-section h4 {
+  font-size: 1.125rem;
+}
+
+.footer-section p {
+  color: var(--gray-400);
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.formation-info {
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section li {
+  color: var(--gray-400);
+  padding: 0.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}

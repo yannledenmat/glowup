@@ -1,0 +1,135 @@
+.products-page {
+  padding: 2rem 0;
+  min-height: calc(100vh - 200px);
+}
+
+.products-header {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.products-header h1 {
+  color: var(--gray-900);
+  margin: 0;
+}
+
+.search-box {
+  flex: 1;
+  max-width: 400px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--gray-300);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.product-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+.product-image {
+  height: 200px;
+  background: var(--gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder-image {
+  font-size: 4rem;
+}
+
+.product-info {
+  padding: 1.5rem;
+}
+
+.product-name {
+  font-size: 1.25rem;
+  color: var(--gray-900);
+  margin: 0 0 0.5rem 0;
+}
+
+.product-description {
+  color: var(--gray-600);
+  font-size: 0.875rem;
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gray-200);
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.loading,
+.error,
+.no-products {
+  text-align: center;
+  padding: 3rem 0;
+  color: var(--gray-600);
+  font-size: 1.125rem;
+}
+
+.error {
+  color: var(--danger-color);
+}
+
+@media (max-width: 768px) {
+  .products-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box {
+    max-width: 100%;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
