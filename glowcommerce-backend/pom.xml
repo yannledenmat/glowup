@@ -128,10 +128,37 @@
             <version>1.19.3</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-core</artifactId>
+            <version>0.8.7</version> <!-- Vérifie la version -->
+            <scope>test</scope> <!-- Scope test : utilisé pour les tests uniquement -->
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.7</version>
+                <executions>
+                    <execution>
+                    <goals>
+                        <goal>prepare-agent</goal>
+                    </goals>
+                    <phase>test</phase>
+                    </execution>
+                    <execution>
+                    <goals>
+                        <goal>report</goal>
+                    </goals>
+                    <phase>verify</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
