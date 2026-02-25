@@ -83,15 +83,3 @@ jobs:
         with:
           name: test-results
           path: glowcommerce-backend/target/surefire-reports/
-
-  # Job 2: Security Scans
-  security-scan:
-    # ...
-
-  # Job 3: Build Docker Image
-  docker-build:
-    # ...
-
-  # Job 4: Deploy (si main seulement)
-  deploy:
-    # ...
