@@ -1,7 +1,7 @@
 .PHONY: help all up down restart logs clean
 
 # Variables
-COMPOSE = docker-compose
+COMPOSE = docker compose
 SERVICES = database backend frontend prometheus grafana portainer pgadmin
 
 # Couleurs pour l'affichage

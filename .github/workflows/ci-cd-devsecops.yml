@@ -1,0 +1,97 @@
+name: CI/CD DevSecOps Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  JAVA_VERSION: '21'
+  REGISTRY: docker.io
+  IMAGE_NAME: glowcommerce/backend
+
+jobs:
+  # Job 1: Build & Test
+
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: glowcommerce_test
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Run tests with coverage
+        run: |
+          cd glowcommerce-backend
+          mvn clean verify -P coverage
+        env:
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/glowcommerce_test
+          SPRING_DATASOURCE_USERNAME: test
+          SPRING_DATASOURCE_PASSWORD: test
+
+      - name: Generate JaCoCo Badge
+        id: jacoco
+        uses: cicirello/jacoco-badge-generator@v2
+        with:
+          jacoco-csv-file: glowcommerce-backend/target/site/jacoco/jacoco.csv
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: glowcommerce-backend/target/site/jacoco/jacoco.xml
+          fail_ci_if_error: true
+
+      - name: Verify code coverage threshold
+        run: |
+          cd glowcommerce-backend
+          mvn jacoco:check -Djacoco.minimum-coverage=0.80
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: glowcommerce-backend/target/surefire-reports/
+
+  # Job 2: Security Scans
+  security-scan:
+    # ...
+
+  # Job 3: Build Docker Image
+  docker-build:
+    # ...
+
+  # Job 4: Deploy (si main seulement)
+  deploy:
+    # ...
