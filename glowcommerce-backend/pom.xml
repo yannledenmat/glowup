@@ -131,14 +131,15 @@
 
         <dependency>
             <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-core</artifactId>
-            <version>0.8.7</version> <!-- Vérifie la version -->
-            <scope>test</scope> <!-- Scope test : utilisé pour les tests uniquement -->
+            <artifactId>org.jacoco.core</artifactId>
+            <version>0.8.7</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -149,12 +150,6 @@
                         <goal>prepare-agent</goal>
                     </goals>
                     <phase>test</phase>
-                    </execution>
-                    <execution>
-                    <goals>
-                        <goal>report</goal>
-                    </goals>
-                    <phase>verify</phase>
                     </execution>
                 </executions>
             </plugin>
